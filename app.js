@@ -72,6 +72,10 @@ document.getElementById('show-route').addEventListener('click', () => {
 document.getElementById('start-movement').addEventListener('click', () => {
     if (routePoints.length === 0) return;
 
+    const startMovementBtn = document.getElementById('start-movement');
+    startMovementBtn.disabled = true; // Disable button
+
+    
     const totalDuration = 10000;
     const stepTime = totalDuration / routePoints.length;
 
@@ -86,6 +90,8 @@ document.getElementById('start-movement').addEventListener('click', () => {
 
             index++;
             setTimeout(move, stepTime);
+        } else {
+            startMovementBtn.disabled = false; // Re-enable button when finished
         }
     }
 
